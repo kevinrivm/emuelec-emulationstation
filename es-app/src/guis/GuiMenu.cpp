@@ -210,7 +210,9 @@ if (ApiSystem::getInstance()->isScriptingSupported(ApiSystem::WIFI))
 	}
 	else
 	{
-		addEntry(_("INFORMATION").c_str(), true, [this] { openSystemInformations(); }, "iconSystem");
+		if (ApiSystem::getInstance()->isScriptingSupported(ApiSystem::WIFI))
+			addEntry(_("NETWORK SETTINGS").c_str(), true, [this] { openNetworkSettings(); }, "iconNetwork");
+		//addEntry(_("INFORMATION").c_str(), true, [this] { openSystemInformations(); }, "iconSystem");
 		addEntry(_("UNLOCK UI MODE").c_str(), true, [this] { exitKidMode(); }, "iconAdvanced");
 	}
 
